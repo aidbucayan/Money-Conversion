@@ -16,6 +16,20 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(): ViewModel() {
 
     init {
+        update()
+    }
+
+    private val conversionLiveData: MutableLiveData<List<String>> = MutableLiveData<List<String>>()
+
+    fun setSelected(conversionList: List<String>?) {
+        conversionLiveData.postValue(conversionList!!)
+    }
+
+    fun getSelected(): MutableLiveData<List<String>> {
+        return conversionLiveData
+    }
+
+    fun update() {
         kotlinx.coroutines.GlobalScope.launch {
             val url = URL(MainViewModel.url)
             val buffer = ByteArray(1024)
@@ -34,16 +48,6 @@ class MainViewModel @Inject constructor(): ViewModel() {
             Timber.e("search = %s", search.size)
             setSelected(search)
         }
-    }
-
-    private val conversionLiveData: MutableLiveData<List<String>> = MutableLiveData<List<String>>()
-
-    fun setSelected(conversionList: List<String>?) {
-        conversionLiveData.postValue(conversionList!!)
-    }
-
-    fun getSelected(): MutableLiveData<List<String>> {
-        return conversionLiveData
     }
 
     companion object {

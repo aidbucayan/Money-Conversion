@@ -13,7 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:queryHint="Filter" />
+        android:layout_marginEnd="60dp"
+        android:queryHint="Filter" >
+
+
+    </androidx.appcompat.widget.SearchView>
+
+    <ImageView
+        android:id="@+id/iv_update"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/baseline_refresh_black_24dp"
+        app:tint="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_conversion_rates"
@@ -26,6 +41,7 @@
         android:scrollbars="vertical"
         android:visibility="visible"
         android:layout_marginBottom="4dp"/>
+
 
     <TextView
         android:id="@+id/tv_fail_to_download"

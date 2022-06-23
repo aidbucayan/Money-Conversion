@@ -61,6 +61,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             populateConversionAdapter(conversionList)
         }
 
+        binding?.ivUpdate!!.setOnClickListener {
+            displayLoading(true)
+            viewModel.update()
+        }
     }
 
     private fun initRecyclerview() {
@@ -89,8 +93,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun displayLoading(isDisplayed: Boolean) {
         if (isDisplayed) {
             binding?.linearProgressBarLoadMore!!.visibility = View.VISIBLE
+            binding?.ivUpdate!!.visibility = View.GONE
         } else {
             binding?.linearProgressBarLoadMore!!.visibility = View.GONE
+            binding?.ivUpdate!!.visibility = View.VISIBLE
         }
     }
 
